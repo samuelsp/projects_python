@@ -28,9 +28,11 @@ for file in files:
             logging.error(str(e))
 
 files = [f for f in os.listdir(DTF)]
+files_deleted = 0
 for file in files:    
     try:        
-        send2trash(DTF + '\\' + file)        
+        send2trash(DTF + '\\' + file)   
+        files_deleted += 1     
     except Exception as e:
         logging.error(str(e))
 
@@ -38,4 +40,5 @@ for file in files:
 execution_time = time() - start_time
 
 logging.info(f'Execution time: {execution_time:.2f} seconds.')
+logging.info(f'Files deleted: {files_deleted}')
 logging.info('End of program')
